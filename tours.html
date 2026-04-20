@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tours — TourHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <header></header>
+
+  <section class="tours-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Our Tours</h1>
+      <p>Choose your next adventure from our curated experiences</p>
+    </div>
+  </section>
+
+
+
+  <section class="container">
+    <h2 class="section-title">All Tours</h2>
+
+    <div class="tour-filters" style="text-align:center; margin-bottom:40px;">
+      <button class="cta-btn" onclick="filterTours('all')">All</button>
+      <button class="cta-btn" onclick="filterTours('europe')">Europe</button>
+      <button class="cta-btn" onclick="filterTours('asia')">Asia</button>
+      <button class="cta-btn" onclick="filterTours('middle-east')">Middle East</button>
+      <button class="cta-btn" onclick="filterTours('tropical')">Tropical</button>
+    </div>
+    <div class="price-filter">
+      <label>
+        Min Price ($)
+        <input type="number" id="minPrice" placeholder="0">
+      </label>
+
+      <label>
+        Max Price ($)
+        <input type="number" id="maxPrice" placeholder="5000">
+      </label>
+
+      <button class="cta-btn" onclick="applyFilters()">Apply</button>
+    </div>
+
+
+    <div class="tours-grid" id="tours-container">
+    </div>
+  </section>
+
+  <footer></footer>
+  <div class="modal-overlay" id="bookingModal">
+    <div class="booking-modal">
+      <div class="modal-icon">✈️</div>
+      <h2>Booking</h2>
+      <p id="bookingText"></p>
+      <button class="modal-btn" id="closeBookingModal">OK</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/tours.js"></script>
+
+</body>
+
+</html>

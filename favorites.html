@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Favorites — TourHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header></header>
+
+<section class="hero" style="height:50vh; background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('/Imgs/fav_page.png') center/cover;">
+  <div class="hero-content">
+    <h1>Your Favorites</h1>
+    <p>All the destinations and tours you loved in one place</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="tours-grid" id="favorites-tours">
+    <p style="text-align:center; color:#666;">No favorite tours yet. Click the heart on a tour to add it here.</p>
+  </div>
+</section>
+
+<footer></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="js/components.js"></script>
+<script>
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  if (!currentUser) {
+    window.location.href = 'login.html';
+  }
+
+  const favoritesKey = `favoritesTours_${currentUser.id}`;
+  let favoritesTours =
+    JSON.parse(localStorage.getItem(favoritesKey)) || [];
+
+  const toursContainer = document.getElementById('favorites-tours');
+
+  function renderFavoriteTours() {
+    toursContainer.innerHTML = '';
+
+    if (!favoritesTours.length) {
+      toursContainer.innerHTML = `
+        <p style="text-align:center; color:#666;">
+          No favorite tours yet.
+        </p>`;
+      return;
+    }
+
+    favoritesTours.forEach(tour => {
+      const card = `
+        <div class="tour-card">
+          <button class="favorite-btn" onclick="removeFromFavorites(${tour.id})">
+            <i class="fas fa-trash"></i>
+          </button>
+
+          <img src="${tour.img}" alt="${tour.name}">
+          <div class="tour-content">
+            <h3>${tour.name}</h3>
+            <p>${tour.desc}</p>
+            <div class="tour-meta">
+              <span class="tour-price">${tour.price}</span>
+              <button class="book-btn" onclick="bookTour(${tour.id})">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      toursContainer.innerHTML += card;
+    });
+  }
+
+  function removeFromFavorites(id) {
+    favoritesTours = favoritesTours.filter(tour => tour.id !== id);
+    localStorage.setItem(favoritesKey, JSON.stringify(favoritesTours));
+    renderFavoriteTours();
+  }
+
+  renderFavoriteTours();
+</script>
+</body>
+</html>

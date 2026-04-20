@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile — TourHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header></header>
+
+<section class="profile-cover">
+  <div class="profile-overlay"></div>
+
+  <div class="profile-header container">
+    <img
+      src="https://ui-avatars.com/api/?name=John+Doe&background=2193b0&color=fff&size=200"
+      class="profile-avatar"
+      alt="User Avatar"
+    >
+
+    <div class="profile-main">
+      <h1 id="profileName">John Doe</h1>
+      <p id="profileEmail">john@example.com</p>
+
+      <div class="profile-actions">
+        <span class="rating">
+          ⭐ 4.5 <small>(120 reviews)</small>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container profile-content">
+
+  <div class="profile-grid">
+
+    <div class="profile-block">
+      <h2>Favorite Tours</h2>
+      <div class="tours-grid" id="profile-favorites-tours">
+        <p class="empty-text">No favorite tours yet.</p>
+      </div>
+    </div>
+
+    <div class="profile-block">
+      <h2>Booked Tours</h2>
+      <div class="tours-grid" id="profile-booked-tours">
+        <p class="empty-text">No booked tours yet.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer></footer>
+<div class="modal-overlay" id="bookingModal">
+  <div class="booking-modal">
+    <div class="modal-icon">✈️</div>
+    <h2>Booking</h2>
+    <p id="bookingText"></p>
+    <button class="modal-btn" id="closeBookingModal">OK</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="js/components.js"></script>
+<script src="js/profile.js"></script>
+
+</body>
+
+</html>
